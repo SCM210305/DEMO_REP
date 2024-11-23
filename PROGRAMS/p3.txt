@@ -1,0 +1,76 @@
+import java.util.Scanner;
+class Staff {
+ String staffID, name, phone, salary;
+ Scanner sc = new Scanner(System.in);
+ void read() {
+ System.out.println("Enter staffID:");
+ staffID = sc.nextLine();
+ System.out.println("Enter name:");
+ name = sc.nextLine();
+ System.out.println("Enter phone number:");
+ phone = sc.nextLine();
+ System.out.println("Enter salary:");
+ salary = sc.nextLine();}
+ void display() {
+ System.out.println(staffID + "\t" + name + "\t" + phone + "\t" + salary);}
+ class Teaching extends Staff {
+ String domain, publication;
+ void read() {
+ super.read();
+ System.out.println("Enter domain:");
+ domain = sc.nextLine();
+ System.out.println("Enter publication:");
+ publication = sc.nextLine();}
+ void display() {
+ super.display();
+ System.out.println(domain + "\t" + publication);}}
+ class Technical extends Staff {
+ String skills;
+ void read() {
+ super.read();
+ System.out.println("Enter skill:");
+ skills = sc.nextLine();}
+ void display() {
+ super.display();
+ System.out.println(skills);}}
+ class Contract extends Staff {
+ String period;
+ void read() {
+ super.read();
+ System.out.println("Enter period:");
+ period = sc.nextLine();}
+ void display() {
+ super.display();
+ System.out.println(period);}}}
+public class Main {
+ public static void main(String[] args) {
+ Scanner sc = new Scanner(System.in);
+ Staff s = new Staff();
+ System.out.println("Enter the number of staffs:");
+ int n = sc.nextInt();
+ sc.nextLine();
+ Staff.Teaching[] ts = new Staff.Teaching[n];
+ Staff.Technical[] teach = new Staff.Technical[n];
+ Staff.Contract[] c = new Staff.Contract[n];
+ for (int i = 0; i < n; i++) {
+ System.out.println("Enter teaching staff info:");
+ ts[i] = s.new Teaching();
+ ts[i].read();}
+ for (int i = 0; i < n; i++) {
+ System.out.println("Enter technical staff info:");
+ teach[i] = s.new Technical();
+ teach[i].read();}
+ for (int i = 0; i < n; i++) {
+ System.out.println("Enter contract staff info:");
+ c[i] = s.new Contract();
+ c[i].read();}
+ System.out.println("\nStaff Details:\n");
+ System.out.println("Teaching Staff details:");
+ for (int i = 0; i < n; i++) {
+ ts[i].display();}
+ System.out.println("\nTechnical Staff details:");
+ for (int i = 0; i < n; i++) {
+ teach[i].display();}
+ System.out.println("\nContract Staff details:");
+ for (int i = 0; i < n; i++) {
+ c[i].display();}}}

@@ -1,0 +1,60 @@
+import java.util.*;
+class box{
+double length,width,height;
+box(){
+length=-1;
+width=-1;
+height=-1;}
+box(double len,double wid,double hgt){
+length=len;
+width=wid;
+height=hgt;}
+box(box ob){
+length=ob.length;
+width=ob.width;
+height=ob.height;}
+box(double len){
+width=length=height=len;}
+double volume() {
+return length*width*height;}}
+class boxweight extends box{
+double weight;
+boxweight(){
+super();
+weight=-1;}
+boxweight(double len,double wid,double hgt,double wt){
+super(len,wid,hgt);
+weight=wt;}
+boxweight(boxweight ob){
+super(ob);
+weight=ob.weight;}
+boxweight(double len,double wt){
+super(len);
+weight=wt;}}
+class shipment extends boxweight{
+double cost;
+shipment(){
+cost=-1;}
+shipment(double len,double wid,double hgt,double wt,double c){
+super(len,wid,hgt,wt);
+cost=c;}
+shipment(shipment ob){
+super(ob);
+cost=ob.cost;}
+shipment(double len,double wt,double c){
+super(len,wt);
+cost=c;}}
+public class boxclassapplication {
+public static void main(String[] args) {
+shipment ship1 = new shipment(10,20,15,10,3.5);
+shipment ship2 = new shipment(2,3,4,0.76,1.28);
+double vol;
+vol=ship1.volume();
+System.out.println("volume of the shipment 1 is "+vol);
+System.out.println("weight of the shipment 1 is "+ship1.weight);
+System.out.println("cost of the shipment 1 is:$"+ship1.cost);
+System.out.println();
+vol=ship2.volume();
+System.out.println("volume of the shipment 2 is "+vol);
+System.out.println("weight of the shipment 2 is "+ship2.weight);
+System.out.println("cost of the shipment 2 is:$"+ship2.cost);}}
